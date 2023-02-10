@@ -1,0 +1,1 @@
+Di seguito, vengono riportate tutte le esecitazioni che vengono fatte e gli homework assegnati da parte del professore

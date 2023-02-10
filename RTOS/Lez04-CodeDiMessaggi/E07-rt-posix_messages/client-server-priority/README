@@ -1,0 +1,22 @@
+L'esercizio è una versione modificata dell' esercizio precedente (client_server)
+In questa versione il server non si bloccherà in attesa di messaggi; se il server non trova nessun messaggio 
+in coda si mette in attesa di un input da tastiera. Quando l'input da tastiera sbloccherà il server,
+quest ultimo leggerà tutti i messaggi che sono stati accodati nella coda. 
+I client sono identi all'esempio precedente ma ricevono in input da terminale all'avvio la priorità 
+dei loro messaggi. In questio modo sarà possibile creare più client con priorità di messaggi differente. 
+Quando il server verrà sbloccatto dall'utente i client che hanno richiesto un token al server verranno 
+serviti in ordinre di priorità
+
+Per eeguire l'esempio compilare i due file in questo modo:
+gcc -o client client.c -lrt
+gcc -o server server.c -lrt
+
+(in alternativa dare il comando "make" che sfrutta il Makefile)
+
+Eseguiamo come amministratori prima il server e poi uno o più client a priorità diversa su terminali differenti:
+sudo ./server
+sudo ./client 10
+sudo ./client 20
+sudo ./client 30
+
+Per concludere l'esecuzione e pulire correttamente le code premere "q" e <ENTER> nel terminale dei Client.
