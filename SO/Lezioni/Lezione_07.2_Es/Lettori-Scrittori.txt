@@ -1,0 +1,64 @@
+Ho una situazione molto simile a quella che si è vista con produttori e consumatori
+
+In fatti, come il problema prod/cons, ho due classi di processi simili: 
+
+    -LETTORI: che leggono un messaggio sulla risorsa condivisa;
+
+    -SCRITTORI: Che scrivono un messaggio sulla risorsa condivisa;
+
+Nel caso di lett/scrittore, ho dei VINCOLI DIFFERENTI: 
+
+    -I LETTORI POSSONO ACCEDERE CONTEMPORANEAMENTE ALLA RISORSA
+        (Dunque, a differenza dei consumatori, i lettori non si devono escludere tra di loro) 
+
+    -Gli scrittori hanno accesso esclusivo alla risorsa
+        (Gli scrittori, si devono escludere tra loro nell'accesso alla risorsa)
+
+    -Scrittori e Lettori, si devono escludere mutualmente -> o accedono gli scrittori o i lettori
+        (Come nel caso di produttore e consumatore!)
+
+
+        Questo porta a due scenari:
+
+         a) STARVATION DEGLI SCRITTORI
+            Fino a quando ho degli scrittori, i produttori non possono produrre
+            
+            Dunque, si può arrivare ad una situazione di attesa indefinita dei processi scrittori
+            
+            In particolare, questo motodo viene impiegato considerando una variabile condivisa che contiene il numero di lettori
+            che sta agendo sulla risorsa condivisa!
+            
+            Fino a quando la variabile sarà >0, allora non posso scrivere!
+
+            -Nel caso in esame ho bisogno di due semafori
+
+                MUTEXL: Per gestire l'accesso alla variabile che contiene il numero di lettori
+                        (i lettori devono agire su queata, modificandola, in mutua esclusione)
+
+                        (Inizializzato ad 1, dunque il primo lettore può subito modificare)
+                    
+                SYNCH: Che serve per garantire l'esclusione tra: 
+
+                        -Lettori e Scrittori
+                        -I soli Scrittori
+
+                        (Inizializzato ad 1, il primo che arriva può accedere alla variabile)
+       
+         b) STARVATION DI ENTRAMBI
+
+            Si prevede il medesimo comportamento sia per lettori che per scrittori: 
+
+                -I lettori non possono leggere fino a quando ci sono degli scrittori
+
+                -Gli scrittori non possono scrivere se ci sono dei lettori
+
+            Questo caso, devo necessariamente usare 4 semafori per la mutua esclisione della risorsa condivisa: 
+
+                -SYNCH: Sincronizzazione tra lettori e scrittori
+
+                -MUTEXL e MUTEXS: Per la mutua esclusione di lettori e scrittori, rispetto alle variabili NUM_LETT e NUM_SCRITT
+                                    (Che contengono il numero di lettori e il numero di scrittori)
+
+                -MUTEX: Serve per gestire l'accesso in mutua esclusione degli scrittori
+
+(Vedere le apposite cartelle per esempi di codice riguardo l'analisi dei due poblemi sopra indicati)        

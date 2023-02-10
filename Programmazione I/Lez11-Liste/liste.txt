@@ -1,0 +1,13 @@
+Una lista risulta essere un elemento molto importante in quanto è quello che va a gestire al meglio la memoria in modo dinamico!
+In generale infatti la lista viene sfruttata ampiamente perchè permette di considerare un insieme di elementi che
+NON VIENE SALVATO IN ZONE DI MEMORIA ADIACENTI come accade nel caso dei vettori o degli array 
+Gli elementi che sono presenti all'interno di una lista, infatti, sono disposti in una qualsiasi zona di memoria, non necessariamente adiacente alle 
+precedenti 
+Ogni elemento però è raggiungibile poichè, ogni "blocchetto" (Il singolo elemento della lista, chiamato anche "NODO"), contiene l'indirizzo di
+memoria utile per raggiungere il blocco successivo e quindi il prossimo elemento!
+
+Per andare a definire quindi una lista è necessario usare due classi importanti: 
+1 - La classe che rappresenta il singolo elemento!
+2 - La classe che rappresenta la vera e propria lista (Essa contiene anche tutte le funzioni utili nella gestione della lista!)
+
+Senza la definizione di tali due classi non possiamo andare a creare una lista!

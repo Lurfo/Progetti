@@ -1,0 +1,6 @@
+Si possono definire altre liste motlo particolari! Tali liste sono chiamate, "Liste circolari"
+Essono sono formate dagli stessi nodi di cui si compongono anche le liste a singolo puntatore, con una particolarità, essi sono collegati in modo circolare!
+Vale cioè a dire che partendo da un nodo qualisasi, in qualsiasi posizione esso si trovi all'interno della lista, possiamo scorrere tutti gli elementi e ritornare al nodo dove siamo partiti inizialmente!
+
+In particolare essa è composta da un nodo speciale, chiamato "Cursor" che è quello che ci permette di cominciare a scorrere attraverso gli elementi che compongono la lista!
+Esso inolte è un nodo che punta ad un elemento chiamato "Back", mentre l'elemento che si trova subito dopo il cursor è chiamato "Front" 

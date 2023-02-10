@@ -1,0 +1,15 @@
+Un esempio molto importante è quello di produttori e consumatori con un singolo buffer 
+Devo gestire: 
+    -La sincronizzazione tra produttori e consumatori
+    -La competizione tra i produttori!
+
+Questo dunque vuol dire che devo sfruttare necessariamente due semafori
+    -SPAZIO_DISPONIBILE, che deve gestire la sincronizzazione tra consumatori e produttori.
+                         Viene bloccato da un produttore e sbloccato da un consumatore
+                         serve a gestire la competizione tra i produttori, che vengono bloccati fino a che un consumatore non ha consumato
+    Questo viene inizializzato ad 1, in modo che il primo produttore può sempre accedere!
+    gli altri accedono solo dopo che è stato consumato!
+    
+    -MESSAGGIO_DISPONIBILE, è quello che viene bloccato da un consumatore e sbloccato poi da un produttore!
+                            fa in modo che i consumatori possano consumare solo dopo che un produttore ha prodotto!
+    Questo semaforo è inizializzato a 0, poichè se dovesse accedere prima un consumatore verrebbe bloccato

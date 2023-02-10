@@ -1,0 +1,3 @@
+Definisco una classe di nome complex. il cuo compito, appunto è quello di andare a considerare tutti i numeri complessi, dotati di parte reale 
+e di parte immaginaria
+Inolre, è importante andare ad eseguire l'overload di tutte le funzioni che possono operare con i numeri reali e farli funzionare con i numeri complessi

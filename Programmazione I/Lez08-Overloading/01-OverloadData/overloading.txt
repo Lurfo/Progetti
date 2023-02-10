@@ -1,0 +1,5 @@
+Quando andiamo ad usare delle particolari classi, come ad esempio la classe time, possiamo andare a definire un Overload degli operatori: 
+Vuold dire cioè che possiamo andare a definire un nuovo comportamento per gli operatori "canonici" che conosciamo!
+In questo modo, ad esempio è possibile andare a sommare un interno ad una data, oppure andare a confrontare due date per vedere quale viene prima o meno
+Possiamo anche effettuare delle operazioni più complesse, che ad esempio vanno a specificare cosa succede quando andiamo a mostrare a video un elemento della classe
+Tutto questo è possibile usando appunto l'overload dell'operatore!

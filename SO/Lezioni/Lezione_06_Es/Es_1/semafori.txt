@@ -1,0 +1,20 @@
+Sono delle variabili speciali che servono per regolamentare l'accesso alle risorse condivise da parte di più processi!
+Oltre alla concorrenza, regolano anche la cooperazione di più processi
+
+In particolare, sfruttano due funzioni importanti: 
+    -Wait -> Usata per ricevere un segnale dal semaforo!
+    -Signal ->Usata per inviare un segnale sul semaforo (Per segnalare che la risorsa è pronta e il processo può usarla!);
+
+Implementate attraverso una funzione chiamata semop! (Controlla i due file semafor.h e semafor.c per vedere la loro implementazione!)
+La funzione semop, fa a sua volta riferimento ad una struttura che fa riferimento ad un'operazione che devo compiere sul semaforo: 
+    Tali operazioni, vengono determinate in base ad una variabile presente nella struct, chiamata sem_op: 
+        -sem_op>0 -> Effettuo una signal
+        -sem_op<0 -> Effettuo una wait
+        -sem_op==0 -> Effettuo l'operazione chiamata  "wait for zero" che sfeglia il processo solo quando si raggiunge lo zero!
+
+Così come avviene nel caso della memoria condivisa, ogni semaforo, viene identificato con: 
+    - Un Id
+    - Un Numero ->Questo perchè i kernel mi mette a disposizione un array di semafori, quindi ogni volta devo specificare
+                  a quale semaforo dell'array sto facendo riferimento!
+
+    

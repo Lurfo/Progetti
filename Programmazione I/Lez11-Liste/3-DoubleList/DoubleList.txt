@@ -1,0 +1,2 @@
+In particolare è molto utile andare a definire una lista che è in grado di andare a mostrare gli elementi partendo sia dalla testa che dalla coda!
+Ogni nodo è quindi formato da due puntatri, uno che punta all'elemento successivo, uno che invece punta all'elemento precedente!

@@ -1,0 +1,134 @@
+È una struttura sintattica, che associa un insieme di operazioni ad una struttura dati che viene condivisa tra più processi
+viene sfruttato per risolvere problemi in cui si ha la necessità di controllare l'assegnazione di risorse a differenti processi
+usando apposite politiche di gestione: 
+
+    -Un solo processo può accedre alle variabili locali (vedi sotto) -> COMPETIZIONE
+
+    -Stabilire l'ordine con il quale i processi hanno accesso alla risorsa -> COOPERAZIONE
+
+
+Esso è configurato come un tipo di dato astratto, composto da: 
+
+    -Le variabili membro: Indicano lo stato della risorda condivisa; 
+    
+    -Le funzioni membro pubbliche, che sono le operazioni utilizzare per l'accesso alle variabili membro; 
+
+    -Le funzioni membro private, che vengono utilizzate dalla struttura stessa, non sono invocabili dall'esterno
+
+
+Il monitor fornisce dunque una astrazione maggiore rispetto ai semafori ed è in grado di poter gestire LA COMPETIZIONE tra processi
+e LA COOPERAZIONE
+
+
+
+-LA COMPETIZIONE viene risolto mediante l'ACCESSO al monitor: Ogni processo può accedere in maniera esclusiva
+al monitor, in questo modo, tutti i processi che attendono il monitor, vengono sospesi;
+
+-LA COOPERAZIONE viene gestita imponendo che un processo può accedere alle variabili SOLO SE E' SODDIFATTA UNA CONDIZIONE LOGICA
+(altrimenti viene sospeso e un altro processo può accedere al monitor)
+
+Per controllare questa condizione, viene utilizzata una variabile apposita, interna al monitor, che viene chiamata VARIABILE TIPO
+CONDITION
+
+    NOTA: Nell'implementazione del monitor (che si trova all'interno delle sottocartelle), queste sono rappresentate da dei semafori
+            anche se in realtà non sono dei semafori! (come accade nella libreria pthread)
+
+    ATTENZIONE:
+    Si può infatti confrontare i semafori con le variabili conditio, vedendo che esistono delle grandi differenze nel loro funzionamento
+    che sono importanti da considerare
+
+
+Bisogna tenere presente che sulla variabile condition, un processo effettua delle operazioni molto simili a quelle sui semafori: 
+
+    -Wait, che sospende sempre il processo che lo ha chiamato; 
+
+    -Signal, che risveglia uno dei processi in attesa
+
+    MA ATTENZIONE:
+
+
+In particolare, si possono avere differenti strategie di implementazione quando un processo effettua una signal, sulla 
+variabile condition: 
+
+    -Monitor Signal_Continue; 
+
+        Il processo che ha effettuato la signal continua con la sua esecuzione:
+        Si privilegia il senalante
+        
+        [NOTA BENE:
+        In questo caso, chi aspetta la viariabile condition, deve controllare la condizione usando un WHILE,
+        perchè potrebbe essere che mentre il processo che ha segnalato esegue questi possa cambiare il valore della condizione]
+
+        Il processo che viene segnalato, viene "spostato" alla coda all'ingresso del monitor, insieme agli altri processi
+        che devono entrare, questo dunque implica che il valore della condizione può essere modificata o dal processo che ha 
+        segnalato o da altri processi che sono sopraggiunti nel monitor
+        Dunque, ogni volta che viene effettuato l'ingresso al monitor, il processo deve sempre controllare che la condizione
+        sia vera (per questo viene usato il while)
+
+
+        Posso avere anche una variante della Signal_Continue che è a Signal_All, il processo segnala tutti i processi
+        che sono in attesa che possono quindi entrare nel monitor, sempre mettendosi in attesa della queue
+
+    -Monitor Signal_wait(); 
+
+        Il processo che ha segnalato, si sospende (non può modificare la condizione di sincronizzazione ulteriormente)
+        e il processo che effettuato una wait riprende la sua esecuzione
+        
+        [NOTA BENE:
+        In questo caso, per controllare la variabile condition, posso usare un semplice IF, poichè sono sicuro 
+        che questa non venga modificata da altri processi!!!]
+
+        Si privilegia il processo che viene segnalato, che trova la condizione sicuramente vera al suo
+        risveglio
+
+        ATTENZIONE: Questo implica che il processo segnalante lasci il monitor per lasciare posto al processo segnalato
+        in questo caso si deve accodare a tutti i processi che sono presenti in attesa sul monitor, quindi potrebbe non rientrare mai
+        
+        Ho una soluzione: MONITOR DI HOARE -> Il processo segnalante viene inserito in una coda a priorità
+        in modo che questo processo abbia la priorità sugli altri processi che tentano di entrare nel monitor, in questo modo
+        non attende più tempo del previsto
+        (infatti, si è sempre previsto che vengano controllate prima le code con prorità e poi l'ingresso del monitor)
+
+
+
+
+FUNZIONI PER LA REALIZZAZZIONE DI UN MONITOR: 
+  
+    -In particolare, si possono considerare 2 problematiche fondamentali da risolvere: 
+
+        -1)L'accesso al monitor  in mutua esclusione fatto dai processi
+            questo è possibile grazie alle funzioni: 
+            
+            a) enter_monitor
+                Questa può essere ottenuta sfruttado un mutex inizializzato ad 1, dunque ogni richiesta di accesso
+                equivale ad una wait sul semaforo, che farà entrare solo il primo processo che arriva
+
+            b) leave_monitor
+                La funzione di uscita dal monitor, che sarà dunque una signal sul mutex!
+                
+                ATTENZIONE: Nel caso del monitor di Hoare devo controllare se ho una serie di processi urgenti, 
+                (questo è possibile anche grazie ad un contatore che viene implementato ed incrementato ogni
+                volta che ho un processo urgente che sta arrivando)
+                in questo caso devo andare a segnalare prima i processi che sono urgenti, solo dopo posso andare a segnalare 
+                tutti gli altri
+
+        -2)Gestione dell'attivazione e riattivazione dei processi sulle variabili condition
+            In questo caso, le variabili condition, possono essere implementate con un semaforo posto a 0
+            (Questo perchè quando effettuo una wait sulla variabile, il processo si deve sempre sospendere)
+
+            Il semaforo è una coda sulla quale si sospendono tutti i processi che attendono la medesima condizione
+
+            Dunque ho le funzioni:
+
+            a)Wait_Cond, con il quale i processi si sospendono sulla condizione e si accodano ad essa
+
+            b)Signal_Cond, con il quale il processo segnala che quella condizione è verifitcata, per quel momento
+
+            ATTENZIONE: Nel caso del monitor di Hoare, occorre aggiungeren un ulteriore semaforo "urgent" sul quale si
+            accodano poi tutti i processi che sono in attesa urgente!
+            In particolare, devo sempre controllare, prima di lasciare il semaforo, che non ci sia nessun elemento in coda
+            a questo
+
+
+(Nelle sottocartelle, sono contenute varie implementazioni di precedenti programmi, usando però il costrutto monitor ed inoltre
+sono anche contenuti i file che specificano la struttura di un monitor e come questo viene implementato)

@@ -1,0 +1,12 @@
+In alcuni casi però si preferisce usare una libreria dinamica a differenza di quella statica poichè si hanno moltissimi
+Vantaggi, trai quali: una migliore manutenzione dell'applicaizone, requisiti di spazio minori e anche uno spazio in memoria 
+molto ridotto: questa tipologie di librerie vengono caricate a tempo di caricamento!
+
+Come poter generare questa tipologia di librerie?
+Utilizzo sempre il compilatore gcc:
+    gcc -shared -Wl ,-soname, libnome.so -o linome.so ogg1.o ... oggN.o
+
+In particolare i flag che ho definito servono a: 
+    -shared, indicazione al compilatore che si sta creando uno shared object
+    -Wl, passa delle opzioni al linker, nel caso in esame il nome della libreria
+    -o, da il nome della libreria

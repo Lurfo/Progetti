@@ -1,0 +1,4 @@
+L'uso di una lista per andare ad implementare lo stack è molto più utile rispetto all'implementazione mediante array o mediante vector (come avviene
+nella libreria standard!)
+Soprattutto perchè l'uso di una lista permette una gestione puramente dinamica della memoria, in modo da poter andare ad inserire qualsiasi elemeto
+all'interno di esso!

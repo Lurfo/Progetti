@@ -1,0 +1,18 @@
+-------------------------------
+Hai selezionato l'account numero: 1
+Nome: Mario
+Cognome: Merola
+Saldo: 0€
+----------------------------------
+-------------------------------
+Hai selezionato l'account numero: 2
+Nome: Mario
+Cognome: Rossi
+Saldo: 0€
+----------------------------------
+-------------------------------
+Hai selezionato l'account numero: 100
+Nome: mario
+Cognome: rossi
+Saldo: 23€
+----------------------------------

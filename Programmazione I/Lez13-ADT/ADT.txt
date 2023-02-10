@@ -1,0 +1,27 @@
+Durante le precedenti lezioni sono stati specificati quelli che vengono chiamati  "Conteiners" cioè degli elementi che hanno il compito di conservare
+altre tipologie di oggetti, che sono cioè i suoi elementi!
+
+All'interno della STL, cioè la Standard Template Library, sono implementati differenti tipologie di containers, specificati in maniera differente: 
+- Stack 
+- Queue
+- Deque 
+- Vector 
+- List
+-  Priority Queue
+
+E anche molte altre tipologie di containers. 
+Ognuno di questi viene specificato come "Template", in modo che esso può contenere differenti tipologie di oggetti in base all'esigenza!
+fornendo quindi una grande flessibilità durante la programmazione!
+Ovviamente ognuno di questi oggetti, contiene anche delle funzioni importanti che ci permettono di manipolare gli oggetti che "giacciono" all'interno
+di essi, per poterli gestire come preferiamo!
+
+Per tali ragioni possiamo parlare di ADT -> Abstract Data Type, sono cioè degli oggetti che possono contenere altri oggetti ed hanno anche la possibilità 
+di definire delle funzioni per operare e modificare gli oggetti che sono contenuti in essi!
+Andando ad incapsulare l'implementazione delle funzioni che essi specificano!
+
+In generale dunque un ADT contiene: 
+- Degli oggetti; 
+- Delle funzioni che operano sui dati che sono contenuti all'interno dell'oggetto;
+
+Un esempio molto importante di ADT sono proprio le liste template che sono state definite precedentemente! Esse infatti ci permettono di gestire 
+In modo semplice differenti tipologie di dati in base alle nostre esigenze!

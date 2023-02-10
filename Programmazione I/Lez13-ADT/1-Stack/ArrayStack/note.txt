@@ -1,0 +1,13 @@
+Come visto questa tipologia di stack implementata mediante array è molto molto semplice da utilizzare, sia perchè il programma è scritto in modo molto 
+semplice, sia perchè: 
+- Contennendo un numero massimo di n elementi, allora esso occupa, in memoria, sicuramente n valore O(n);
+- Ogni operazione che però si effettua sullo stack utilizza un tempo di esecuzione di O(1), quindi è molto veloce e non richiede molte risorse!
+
+Tuttavia ci sono anche alcune negatività nell'udo di un array come base dello stack: 
+- Forse la cosa più importante è che la capacità dello stack deve essere decisa a priori, perchè basandosi su un array la sua memoria non può essere
+  allorata dinamicamente!
+
+- Proprio perchè abbiamo un tipo di memoria non dinamico, quando proviamo ad effettuare un operazione di push, esaurita la capacità massima dello stack
+  allora abbiamo che si genera un eccezione di un particolare tipo che dobbiamo andare a gestire!
+
+Per queste ragioni è quindi molto più conveniente andare ad utilizzare uno stack basato su delle liste! Che risultano essere molto più efficienti!

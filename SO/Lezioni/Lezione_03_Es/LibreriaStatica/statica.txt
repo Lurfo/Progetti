@@ -1,0 +1,23 @@
+Voglio andare a creare una libreria statica nella quale andare ad inserire le funzionalità racchiuse nel file header libreria.h
+La libreria statica, non è sempre la scelta migliore, poichè questa mi va a far aumentare notevolmente le dimensioni 
+dell'applicaizone, inolte questa deve essere ricompilata ogni volta che ho a che fare con una modifica della libreria
+
+Per definire una libreria dinamica, devo andare ad inserire una nuova direttiva nel makefile, che serve proprio per 
+andare a compilare la libreria come statica: 
+
+    ar rcs libex.a ex.o
+
+i flag che ho specificato servono per: 
+    -r rimpiazza il file
+    -c crea la libreria, se non esiste
+    -s crea un indice oggetto file
+
+il nome della libreria che ho definito lo devo sempre specificare usando libmat.ad
+
+a questo punto devo collegare i vari file, usando il compilatore, con apposite modifiche:
+
+    gcc -o start main.c -L${curr} -lex
+
+Dove ho che: 
+    curr:indica la directory in cui è contenuta la libreria che ho formato 
+    -l serve a specificare il nome della libreria statica, senza considerare il prefisso lib e il .a

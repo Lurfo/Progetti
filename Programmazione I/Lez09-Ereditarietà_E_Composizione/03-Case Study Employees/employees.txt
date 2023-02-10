@@ -1,0 +1,5 @@
+Genero un programma che va a a tenere conto di tutti i dati di varie tipologie di dipendenti e che, polimorficamente va a calcolare il loro salario!
+I tipi di impiegati che devono essere considerati sono:
+-Salario Fisso (Salaried)
+-In base alle vendite (Commission)
+-Salario fisso+percentuale in base alle vendite! (BasePlusCommision)

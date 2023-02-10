@@ -1,0 +1,10 @@
+void buildheap(int* a, dim){
+    
+    for(int i=dim/2; i>; i++){
+        heapfy(a, i);
+    }
+}
+
+
+
+void heapfy()

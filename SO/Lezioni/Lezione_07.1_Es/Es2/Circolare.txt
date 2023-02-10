@@ -1,0 +1,43 @@
+In questo caso ho un problema ch è molto simile al caso di ES1, ma piuttosto che un singolo buffer ho un buffer gestito
+come una coda circolare. 
+
+Le Condizioni sono però le medesime: 
+    -Consumatore non può consumare se un produttore non ha prodotto
+    -Produttore non può produrre se un conumatore non ha consumato!
+
+In particolare avrò che: Il produttore produce dalla cima della coda, mentre il consumatore consuma a partire dalla fine della coda
+
+Come nel caso precedene, vado sempre ad usare dei semafori che mi gestiscono concorrenza e cooperazione!
+
+    -SPAZIO_DISPONIBILE: Inizializzato con il numero di elementi che può essere ospitato nella memoria circolare
+                        In quanto, inizialmente tutti gli spazi sono disponibili alla consumazione!
+                        Viene bloccato dal produttore quando comincia a produrre e poi sbloccato dal consumatore una volta che
+                        ha consumato!
+
+    -MESSAGGIO_DISPONIBILE: Inizializzato a 0, poichè suppongo che inizialmente non ho nessun elemento contenuto nella coda!
+                            Viene bloccato dal consumatore quando comincia a consumare e poi è sbloccato dal produttore quando
+                            ha finito di produrre!
+
+La CODA CIRCOLARE, viene implementata tramite una struttura apposita! (Considerando che essa è un insieme di interi!)
+
+
+
+ATTENZIONE: Questa soluzione è valida quando ho un solo produttore ed un solo consumatore, perchè si trovano sempre in posizioni 
+            nel buffer
+
+            La situazione cambia quando ho a che fare con più produttori e consunmatori: 
+                In questo caso, le funzioni di produzione e di consumazione, devono essere eseguite in mutua esclusione:
+                    Ho un problema di competizione tra i consumatori e tra i produttori che vogliono accedere alla medesima risorsa
+
+                Dunque, inserisco altri due semafori: 
+
+                    -MUTEX_C, per le operazioni di consumo
+                        (Regola la mutua esclusione dei consumatori)
+
+                    -MUTEX_P, per le operazioni di produzione
+                        (Regola la mutua escluzione dei produttori)
+        
+                    (Entrambi i semafori, sono inizializzati ad 1: il primo processo che arriva può consumare/produrre)
+
+
+    

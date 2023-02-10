@@ -1,0 +1,25 @@
+All'interno di alcune strutture definite all'interno della stl possiamo trovare, assieme alle varie classi che sono specificate, anche una classe
+speciale che è associata ad essa, chiamata "Iterator"
+
+Questa classe non fa altro che specificare una posizione all'interno di un container, avendo la pobbilità di poter scorrere tra gli elementi che sono 
+presenti all'interno della struttura navigando tra le varie posizioni del container!
+Dunque il loro uso è molto importante soprattutto quando dobbiamo spostarci all'interno di una struttura dati, come ad esempio una lista!
+
+Se "p", indica un Iterator, allora come funzione anche con i vettori, il valore "p", specifica la posizione in cui si trova l'elemento che sto 
+mentre "*p", specifica l'operatore di deferenziazione che va a mostrare l'elemento puntato dall'Iterator!
+
+Se il funzionamento è simile a quello di un vettore, andado allora a porre "++p", non faccio altro che avanzare di posizione e considerare un altro elemento!
+In particolare, quando consideriam un container che, ha anche un iterator, allora andiamo a dichiarare anche due funzioni particolari
+La funzione Begin e la funzione End, che non fanno altro che restituire un iterator rispettivamente al primo e all'ultimo elemento della struttura!
+
+
+Gli iterator sono molto importanti, tanto che vengono utilizzati all'interno di molte funzioni di libreria della STL, ad esempio la
+funzione "sort()", che fa l'ordinamento degli elementi contenuti nel container, ha come argomenti due iterator!
+-->sort(p,q): Tale funzione quindi va a riordinare gli elementi che sono compresi tra p e q!
+Così come la funzione sort, ci sono anche molte altre funzioni che hanno come tipologia di argomenti degli iterator!
+
+Ovviamente differenti tipologie di container, possono avere iterator completamente differenti che hanno anche delle funzioni completamente differenti da altre tipologie!
+e dunque essere utilizzati anche in modalità differenti!
+
+Come detto anche sorpa, ci possono essere delle funzioni membro di alcuni container, che hanno funzioni membro che usano come argomenti 
+degli iterator, in modo tale da poterle utilizzare in modo molto semplice!

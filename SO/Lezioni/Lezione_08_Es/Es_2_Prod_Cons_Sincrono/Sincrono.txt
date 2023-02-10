@@ -1,0 +1,9 @@
+Implemento il problema di produttore consumatore, usando però una coda di messaggi sincrona, sfruttando delle 
+primitive asincrone
+
+In particolare: 
+    Devo andare a definire una send sincrona e una receive bloccante, in modo che il processo attenda che sia stato prima prodotto
+    qualcosa
+
+Per andare a generare queste due tipologie di funzioni, ho la necessità di andare a utilizzare due code di comunicazione tra 
+i processi per lo scambio di messaggi, in modo da attendere che arrivi la conferma per consumare o produrre

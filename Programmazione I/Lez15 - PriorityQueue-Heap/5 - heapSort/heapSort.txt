@@ -1,0 +1,3 @@
+Come già specificato in 3, alcune funzioni che ho definito, tra cui la funzioni buildHeap, sono molto utili per andare a traformare un array o un 
+vettore in un heap! In questo modo usando alcune delle funzioni che posso trovare anche nella classe heap, posso andare a generare un algoritmo di ordinamento
+molto utile, chiamato proprio HeapSort!

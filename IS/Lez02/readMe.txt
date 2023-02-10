@@ -1,0 +1,1 @@
+Un esempio sulla traduzione di un modello visto a lezione!

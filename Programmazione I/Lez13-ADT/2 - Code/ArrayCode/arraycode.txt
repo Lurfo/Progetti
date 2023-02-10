@@ -1,0 +1,15 @@
+In questa situazione andiamo ad usare un array come una base per andare a costruire una queue. 
+Si ha che, l'array, Ovviamente, ha una dimensione stabilità già allocata, ma non tutte le posizione che possono ospitare degli elementi devono 
+necessariamente essere inseriti!
+Vale cioè a dire che posso inserire all'interno dell'array qualsiasi numero di elementi che voglio, ovviamente fino a che non vado a riempire la
+dimensione dell'array!
+
+In particolare, devo fare in modo che quando i due segnaposto che ho definito arrivano al valore "N" dell'array, essi devono tornare alla posizione iniziale
+Per tale motivo questo arrayv viene anche definito con il nome di buffer circolare! Proprio perchè i due segnaposto devono scorrere ciclicamente
+L'array per andare ad inserire nuovi elementi all'interno dell'array ogni volta che esso ha degli spazi liberi da poter utilizzare!
+
+Di conseguenza devo fare in modo, usando le funzioni "DEQUEUE" ed "ENQUEUE", di realizzare l'implementazione di questo buffer circolare!
+
+Ovviamente nello stato iniziale, quando l'array è vuoto, sia l'header che il tail sono inizializzati alla posizione 0 a mano a mano che essi avanzano 
+essi devono essere modificati!
+

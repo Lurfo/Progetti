@@ -1,0 +1,46 @@
+In particolare, durante questa lezione si fa riferimento ai meccanismi che permettono la comunicazione Inter-Processo
+chiamati risorse IPC. 
+
+Una risorsa IPC, deve essere identificata nel kernel tramite un proprio valore univoco, il suo ID, che può essere ottenuto
+solo successivamente alla definizione di una chiave IPC, che può essere ottenuta in modalità differenti: 
+
+    -Direttamente definita nel codice ->Può causa molti errori se la chiave è già in uso nel sistema
+
+    -Generata mediante una chiamata di sistema -> La funzione ftock 
+
+    -Definta mediante una macro IPC_PRIVATE -> In questo caso la chiave sarà una risorsa pivata, inizializzata a 0 
+    che può essere visibile solo dal padre e dai suoi figli! (È la modalità che permette una migliore gestione della risorsa
+    è infatti meno probabile che ci possa essere un errore nella sua gestione!)
+    NOTA BENE: Questa modalità non è però ottima nel caso in cui mi trovo a gestire dei programmi di due eseguibili differenti!
+
+Anche con la funzione ftock(), la gestione diventa complessa, il suo uso è per lo più:
+
+        mykey = ftock("./eseguibile", "a"); 
+
+(La funzione combina "inode number" e "minor device number" di, rispettivamente eseguibile e identificatore)
+
+Essa prende in ingresso un pathname e un identificatore -> Questo indica che se uso i medesimi parametri, allora la funzione
+mi restituisce il medesimo valore della chiave per due processi differenti!
+
+
+
+Sulla risorsa condivisa, posso andare a sfruttare delle funzioni molto importanti: 
+
+    -Primitiva get(): 
+        Specificata dalla forma: int ...get(key_t key, ..., int flag), dove: 
+
+            -key indica la chiave della risorsa, definita in uno dei modi sopra 
+
+            -flag indica la modalità di acquisizione e i permessi di accesso che possono anche essere combinati tra loro
+            in particolare, se non vado a definire alcuna modalità di acquisizione, imposto il flag a 0, la risorsa condivisa 
+            deve essere già presente nel sistema, altrimenti genero un errore!
+        
+        La Primitiva get, restituisce dunque un intero, che viene chiamato "Descrittore" della risorsa condivisa
+        
+    -Primitiva ctl(): 
+        Specificata da: int ...ctl(int desc, ..., int cmd), dove: 
+
+            -desc indica il descrittore della risorsa condivisa
+            
+            -cmd indica il comando da eseguire: La funzione ctl è infatti una funzione che permette di eseguire delle 
+            operazioni sulla risorsa condivisa, quali la sua cancellazione, la richiesta di informazioni ecc...

@@ -1,0 +1,9 @@
+In particolare sono una tipologia di code molto importanti che hanno una particolarità: 
+Posso andre a prelevare sia l'elemento dalla sommità che l'elemento dal fondo della coda, andando quindi a rimuovere quel principio di FIFO
+che abbiamo visto nelle code "normali", proprio perchè posso scorrere la coda come preferico, sia partendo dalla fine che dall'inizio!
+
+Proprio grazie a questa loro caratteristica le DQUEUE Sono una struttura molto versatile!
+Ovviamente, poichè posso andare a prelevare sia l'elemento alla sommità che quello alla fine della coda, ovviamente è anche possibile andare ad 
+Inserire sia l'oggetto all'inizio della coda che alla fine della coda!
+
+Il modo più facile per poter andare ad implementare questa tipologia di struttura dati è sfruttando le liste a doppio puntatore!

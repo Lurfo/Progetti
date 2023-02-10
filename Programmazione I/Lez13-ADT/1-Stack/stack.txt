@@ -1,0 +1,24 @@
+Lo Stack è forse uno degli ADT molto più semplici da implementare 
+Esso è fondamentalmente un container che segue la policy: LAST IN - FIRST OUT -> L'ultimo elemento che viene inserito all'interno del container
+è il primo che viene estratto! (Cioè, si trova al di sopra di tutti gli altri!)
+
+Lo Stack viene specificato dalla STL! Per definirlo usando la libreria standard bisogna usare: 
+
+#include <stack>
+
+using std::stack;
+
+int main(){
+    stack stk; 
+     ...
+}
+
+Sulla variabile che è stata definita possiamo andare poi ad operare tutte le funzioni che la stl prevede sullo stack!
+
+In particolare questo container, utilizza come struttura dati concreta sulla quale va ad operare un vector, che viene aumentato dinamicamente ogni 
+volta che raggiungiamo la metà degli elementi che esso può contenere, non fa altro che raddoppiare la sua grandezza, come stato già specificato 
+precedentemente!
+
+Di conseguenza, se lo stack deve implementare molti elementi o pochi elementi, utilizzare un vector non sempre può essere una scelta molto utile!
+Potrebbe essere più vantaggioso implementare uno stack che si basa su un array, quando conosciamo il numeri di elementi che esso può contenere 
+Oppure andare ad implementare uno stack basato su una lista, che va ad aumentare la sua dimensione dinamicamente, senza andarla a raddoppiare!

@@ -1,0 +1,6 @@
+In particolare posso definire un buffer di stato TRAMITE IL QUALE POI I PROCESSI POSSONO OTTENRE L'INDICAZIONE SULLA LOCAZIONE DI MEMORIA DISPONIBILE!
+in questo caso, non accedo più in mutua esclusione al buffer che contiene direttamente gli elementi, ma al vettore di stato
+fornendo poi al processo la locazione a cui accedere!
+
+Il vettore di stato infatti contiene indicazioni sulla corrispondente locazione di memoria del buffer, in modo tale che il processo
+sa se essa è piena, in uso, oppure contiene un messaggio e può essere letta!

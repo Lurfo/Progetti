@@ -1,0 +1,12 @@
+Andando a fornire opportune istruzioni al compilatore posso effettuale quello che è chiamato "Dumping"
+Vado cioè ad aprire il file oggetto del mio programma per andare a vedere come sono state codificate le istruzioni
+In questo caso devo usare il comando: 
+gcc -c -g %.c
+
+Nota che il flag -g serve per mostrare il codice c durante il disassemblaggio!
+
+Il disassemblaggio è fatto usando il comando: 
+
+objdump -x [nomefile]
+
+Posso anche usare un altro comando, per mostrare il disassemblato dell'area testo di tutto il file sorgente

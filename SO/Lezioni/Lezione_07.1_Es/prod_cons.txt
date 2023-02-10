@@ -1,0 +1,93 @@
+Uno dei problemi della programmazione concorrente è caratterizzato dal problema: PRODUTTORE CONSUMATORE
+
+-Ho due categorie di processi
+    -PRODUTTORE: Depositano un messaggio sulla risorsa condivisa; 
+    -CONSUMATORE: Preleva il messaggio dalla risorsa condivisa
+
+
+    ATTENZIONE: Si giunge ad una conclusione importante: Non compare un problema di competizione dei due processi->Oguno compie delle
+                operazioni differenti sul buffer condiviso
+
+                NOTA: Anche se esiste un problema di mutua escluzione nell'uso della risorsa,
+                    esistono dei vincoli tra i processi, che bisogna considerare:
+
+                -Il produttore, non può produrre prima che un consumatore non abbia prelevato;
+
+                -Un consumatore non può consumare prima che un produttore non abbia prodotto;
+
+                NOTA BENE: Dunque questi vincoli, danno un ordinamento del problema (Che mi garantisce la mutua esclusione)!!!
+                            
+                            Si giunge ad una cooperazione tra i due processi, che devono scambiarsi dei segnali tra loro per indicare
+                            sia il deposito che il prelievo 
+
+                            Uno dei due processi, si deve sospendere mentre attende il segnale dell'altro!
+
+
+                ATTENZIONE: Il fatto che non ci sia un problema di mutua esclusione a causa dei vincoli, non indica che non ho
+                            la necessita di utilizzare delle strutture di controllo (semafori o più avanti dei monitor), questo
+                            perchè devo sempre avere delle strutture che mi garantiscono la cooperazione tra i due processi
+                            senza dover fare delle ipotesi sulla velocità dei due processi, che risulta comunque impredicibile
+
+
+Il problema PRODUTTORE-CONSUMATORE, può essere implementato mediante l'uso di differenti tipologie di memoria condivisa, in base alla
+differente struttura della memoria, allora posso avere differenti soluzioni ed implementazioni:
+
+
+
+PRODUTTORE CONSUMATORE CON SINGOLO BUFFER (Controllare Es1_Prod)
+I vincoli che devo rispettare sono quelli specificati anche sopra:
+
+    -Il produttore, non può produrre prima che un consumatore non abbia prelevato;
+
+    -Un consumatore non può consumare prima che un produttore non abbia prodotto;
+
+La sua implementazione è fatta dunque usando due semafori
+
+    -Uno segnala che sia disponibile lo spazio di produzione (inizializzato a 1, il produttore appena arriva trova lo spazio vuoto)
+
+    -L'altro segnala che è disponibile un mesaggio da consumare (inizializzato a 0, il consumatore si sospende in attesa del produttore)
+
+
+
+
+PRODUTTORE E CONSUMATORE CON UNA CODA CIRCOLARE (Vedi Es2)
+In questo caso, oltre all'array, nel quale inserisco i valori, ho anche due variabili, anche queste condivise
+ 
+    -testa, la posizione del primo elemento della coda, indica il primo elemento dipsonibile da memorizzare
+
+    -coda, la posizione dell'ultimo elemento, indica il prmo elemento da consumare
+
+Dunque, in base a questo si ha che: 
+
+    -Produttore, produce in testa 
+
+    -Consumatore consuma in coda
+
+Si utilizzano anche i medesimi semafori, che però son inizializzati con valori differenti (Controllarare Circolare.txt)
+
+Inoltre, bisogna anche tenere conto del fatto che è possibile considerare il medesimo problema, quando si hanno più produttori e 
+consumatori, in quel caso il problema si modifica, perchè devo tenere conto che le: 
+    OPERAZIONI DI PRODUZIONE E CONSUMAZIONE DEVONO AVVENIRE RISPETTIVAMENTE IN MUTUA ESCLUZIONE
+    (Dunque, devo aggiungere altri due semafori, uno per i produttori ed uno per i consumatori)
+
+
+L'aggiunta di altri due semafori, per la mutua esclusione di produttori e consumatori, penalizza i produttori o i consumatori valoci
+che devono attende che quelli lenti abbiano terminato (Situazione che accade, quando ho a che fare con dei messaggi che hanno
+una lunghezza variabile)
+Dunque, una possibile soluzione è quella di usare un vettore di stato
+
+
+
+PRODUTTORE E CONSUMATORE CON BUFFER DI STATO (vedi Es3)
+In questo caso, si cerca di rimediare al problema di produttori e consumatori lenti, inserendo un vettore ausiliario, con pari dimensione
+del buffer di memoria, ma che contiene le indicazioni sullo stato del posto del vettore inizale
+
+NOTA: In questto caso SOLO L'ACCESSO AL BUFFER viene regolato in mutua esclusione 
+      Dunque è per accedere al vettore di stato che vengono impiegati i due semafori per la mutua esclusione tra produttori e consumatori
+
+Dopo aver trovato la posizione in cui produrre/consumare allora produttori e consumatori procedono in concorrenza nella modifica e nella
+lettura
+
+Dunque, con questa soluzione i produttori veloci possono terminare prima e segnalare i consumatori (e vice versa)
+
+                

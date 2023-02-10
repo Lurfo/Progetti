@@ -1,0 +1,8 @@
+Nella cartella 1 è stata definita un lista in grado di andare a contere degli elementi di tipo stringa, dunque quella lista è stata costruita 
+appositamente per memorizzare degli oggetti di tipo stringa! Vale cioè a dire che se andiamo ad inserire qualsiai altro elemento all'interno della 
+struttura della lista esso genererà un errore poichè la lista non sa cosa farsene di quell'elemento!
+
+Tuttavia, la cosa più conveniente da fare in questi casi è sfruttare una particolarità delle classi del c++: 
+Andare a generare un template per una lista generica in grado di poter contere un qualsiasi elemento voglimo andare ad inserire al suo interno!
+Questa è una cosa molto vantaggiosa, poichè ci permette di riutilizzare la nostra lista generica con ogni programma che tratta un tipo differente 
+di dato, senza dover andare a scrivere la lista in base al tipo di elemento che ci occorre usare!

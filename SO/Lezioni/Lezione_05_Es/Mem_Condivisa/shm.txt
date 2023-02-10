@@ -1,0 +1,14 @@
+La memoria condivisa è uno dei meccanismi di comunicazione tra processi più sfruttato, questo perchè anche se i processi sono 
+padre e figlio, non hanno la possibilità di comunicare tra loro (Come, al contrario, avviene con i thread), infatti ogni 
+modifica che essi fanno alle proprie variabili è visibile esclusivamente ad essi!
+
+La memoria condivisa, Shared Memory (shm), è quindi una risorsa importante per permettere a due processi di comunicare tra loro
+in generale l'uso di una SHM, prevede i seguenti passi: 
+
+    -La creazione di una SHM, definendo la chiave (con le modalità definite prima) ed il descrittore (con la funzione shmget)
+    -Il collegamento della SHM, andandola proprio a inserire nella memoria
+    -L'utilizzo
+    -Lo scollegamento della SHM, importante perchè altrimenti non posso eliminarla
+    -L'eliminazione della risorsa
+
+

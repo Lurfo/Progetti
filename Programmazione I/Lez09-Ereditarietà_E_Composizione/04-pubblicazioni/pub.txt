@@ -1,0 +1,6 @@
+Genero un programma in grado di gestire un elenco di pubblicazioni!
+Libri
+Articoli su riviste 
+Articoli di convegni 
+
+Consideriamo una Abstract Base class dalla quale derivano tutte le altre!

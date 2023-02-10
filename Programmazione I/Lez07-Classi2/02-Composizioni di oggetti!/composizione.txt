@@ -1,0 +1,3 @@
+Possiamo andare a definire all'intetno di alcuni oggetti, altri dati di tipo oggetto! Andando quindi a creare una composizione di oggetti!
+Un caso potrebbe essere una classe che contiene i dati di alcuni impietati, all'interno dei dati di questa classe, andiamo anche a dichiarare un dato
+che riporta la data di assunzione di qudll'impiegato, ovviamente questo dato sarà un oggetto di tipo data!

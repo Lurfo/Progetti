@@ -1,0 +1,67 @@
+Importante nei linguaggio che, come nel caso del c++, sono definiti "Object Oriented" (nel senso che fanno un grande uso degli oggetti per specificare
+dei programmi molto complessi), il RIUTILIZZO di alcune funzioni o di oggetti è molto importante
+NOTA BENE: Con riutilizzo non si intende il semplice copia e incolla che può essere effettuato, ma si parla di meccanismi più complessi
+
+Nel caso del c++ ci sono due meccanismi per ottenre il riutiilizzo di codice scritto in precedenza: 
+1-La composizione;
+2-L'ereditarietà
+
+Sono due modalità molto differenti per poter sfruttare funzioni e oggetti che sono stati già scritti in precedenza!
+
+LA COMPOSIZIONE
+Vista nel caso dell'impiegato, consiste appunto nel definire un composizione di due oggetti, dunque un oggetto nell'oggetto. 
+Ad esempio, nel nuovo oggetto, uno dei suoi member-data, può a sua volta essere un oggetto! In questo caso l'oggetto che contiene il secondo 
+può sfruttare tutte le funzionalità del primo!
+
+L'EREDITARIETA'
+Questo è un concetto molto differente rispetto al primo, in generale, consiste nel generare una classe che va a SPECIFICARE alcune funzionalità
+rispetto alla classe da cui essa deriva.
+
+Questo meccanismo permette quindi di considerare due classe: una, chiamata base-class, altro non è che la classe di partenza, la seconda, chiamata 
+derived-class è quella che deriva dalla prima, in particolare essa "prende" determinati membri della classe base (quella da cui deriva)
+e può specificare alcune funzioni per andare a "specializzarsi" rispetto alla classe iniziale!
+
+CI SONO PERO' DELLE PARTICOLARITA'
+La classe Derivata che andiamo a definire va ad ottenere tutti i membri della classe base (che essi siano private, public o protected), la cosa importante
+è che non vengono ereditati i costruttori e i distruttori, che devono essere riscritti per la nuova classe!
+Inolte, la classe derivata, NON PUO' MODIFICARE i member-data della classe base se sono definiti come protected!
+(Al contrario tutto ciò che è definito come public o come protected, può essere "letto" e "modificato" dalla classe derivata!)
+
+Una classe derivata può anche andare a definire un ovverride delle funzionalità che sono contenute nella classe base 
+cioè può andare a definire una propria implementazione per le funzioni della classe base!
+
+Come si vede dunque le due modalità che sono state elencate sono molto differenti: 
+La composizione -->Definisce l'uso di un oggetto all'interno di un altro 
+L'ereditarietà -->Definisce una sorta di "miglioramento" o "specializzazione" di una classe, ad opera di tante classi che derivano da una classe base
+comune, dalla quale riprendono tutti gli elementi, che possono (o in determinati casi, come i membri private, non possono) essere modificati 
+e sovrascritti dalla classe derivata!
+
+
+
+
+
+COSA SI INTENDE CON DATI PROTECTED 
+In particolare fin'ora si sono visti due tipologie di dati differenti, quelli public e quelli private 
+Andiamo però ad aggiungere come detto sopra anche quelli protected, abbiamo delle differenze importanti 
+
+1-Private: Possono essere solo "visti" dalla classe a cui appartengon e non possono essere modificati dalle classi derivate o funz esterne 
+2-Public: Possono essere visti e modificati da chiunque 
+3-Protected: Possono essere visti solo dalla classe a cui appartengono e dalle classi derivate, e possono anche essere modificati da queste!
+
+
+
+
+
+***POLIMORFISMO***
+Quando abbiamo a che fare con delle classi dalle quali andiamo a definre delle classi derivate, abbiamo un fenomeno importante che entra in gioco, 
+quello del POLIMORFISMO.
+Come detto, possiamo andare, nelle classi derivate da quella base, andare a riscrivere determinate funzioni della classe base in modo che si 
+adattino alle caratteristiche del nuovo oggetto!
+Questo è proprio un esempio di POLIMORFISMO, infatti, possiamo definire un oggetto base, generico e da questo andare a definire sempre più oggetti
+specifici che riscrivono le funzionalità della classe base!
+
+Perchè però è importante?
+Andando ad eseguire un ovverride delle funzionalità di base, quelle generiche, dal nostro client possiamo andare a definire un unico messaggio 
+che viene interpretato in base all'oggetto a cui ci stiamo riferendo, in modo "automatico"
+Queto quindi ci permette di poter andare andare anche ad aggiungere nuove classi o modificarne alcune, senza necessariamente dover andare ad aggiornare il nostro 
+client, il quale lancia il messaggio che viene poi interpretato dalle varie funzioni!

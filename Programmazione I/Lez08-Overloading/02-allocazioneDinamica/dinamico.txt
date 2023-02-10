@@ -1,0 +1,12 @@
+In particolare, quando ci troviamo a gestire dinamicamente la memoria è possibile andare ad utilizzare due operatori fondamentali:
+-Operatore "new", che serve per andare a definire la memoria necessaria ad allocare l'oggetto richiesto
+-Operarore "delete", che server per andare a liberare la memoria che era stata presa in precedenza!
+Grazie ad una combinazione di queste due è possibile andare a creare degli elementi!
+
+In particolare, possiamo vedere che l'operatore new è molto importante in quanto esso va a conservare lo spaizo della memoria, necessario a conservare
+l'oggetto, in una regione specifica di essa, chiamata "heap", regione che serve appositamente per immagazzinare dei dati dinamicamente!!!
+
+Dopo che abbiamo riservato lo spazio necessario in memoria per quell'oggetto che, non richiedo più la nostra attenzione, è buona prassi andare a svuotare
+questo spazio, per renderlo nuovamente disponibile, questo perchè, quando andiamo a conservare un oggetto in memoria tramite il comendo new e non 
+viene rilevata abbastanza memoria per poter salvare quest'ultimo, allora si può generare un errore di tipo std::bad_alloc!
+Inoltre, il comando delete è molto importante da usare, soprattutto è molto importante utilizzarlo nel modo corretto!

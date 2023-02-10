@@ -1,0 +1,9 @@
+Come abbiamo già definito uno dei modi più efficienti per rappresentare in generale una qualsiasi ADT è quello di avvalersi delle liste!
+Nel caso di una coda uno dei modi più efficienti per implementarla è usando delle liste circolari che ci permettono di ricreare quella struttura a
+"buffer circolare" che bisogona implemetare per creare una coda!
+
+In particolare l'uso di una CList è anche efficiente da un punto di vista di gestione della memoria, essa infatti ci consente di poter inserire 
+nella coda un numero illimitato di elementi, cosa che con l'array era impossibile visto che aveva una dimensione predefinita, mentre con un vector avremmo 
+allocato eccessiva memoria per la rappresentazione della struttura!
+
+Ovviamente dobbiamo andare ad includere anche le CLinkedList!

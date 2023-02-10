@@ -1,0 +1,14 @@
+Il problema del programma che abbiamo deginito prima è derivato dal binding con cui vanno a legarsi la funzione chiamata e la chiamata!
+In articolare esistono due tipi differenti di binding possibili: L'early binding e il late binding; 
+
+Nel caso del C++ il tipo di binding che viene sfruttato è proprio l'early binding: 
+Vale cioè a dire che il legame tra le due viene effettuato a livello del compilatore, prima ancora che il driver conosca il tipo di valore che gli andiamo ad inviare
+(Nel senso che lui sa che il valore che dobbiamo inviargli è di tipo Instrument è quindi collega la chiamata alla funzione che si trova nella classe Instruments)
+Questo tipo di binding è quello che viene sfruttato soprattutto nei linguaggi compilati, come il c++
+
+Il caso del Late Binding: 
+In questo caso il legame viene effettuato a "runtime" (motivo per cui è anche chiamato "runtime binding" o "Dynamic Binding") cioè quando il programma sta venendo eseguito
+così facendo il programma sa perfettamente quale funzione andare a chiamare in base al tipo di elemento che andiamo a passargli!
+
+RICORDA: Nel caso dei linguaggi compilati, si ha la possibilità di sfruttare determinate parole chiave per andare a definire una funzione per cui deve essere eseguito un late 
+binding!(vedi 2.3) 

@@ -1,0 +1,2 @@
+Vado a specificare la la classe heap che utilizza le funzioni necessarie per descrivere la classe heap, usando un template!
+In particolare, poichè vogliamo utilizzare un numero di elemeti che non viene definito, allora posso anche andare a definire un vettore!

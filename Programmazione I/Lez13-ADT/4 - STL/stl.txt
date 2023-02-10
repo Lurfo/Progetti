@@ -1,0 +1,2 @@
+Nelle cartelle precedenti ho implementato "manualmente" le varie ADT, tuttavia si può vedere che la STL (standard template library), mette a disposi-
+zione delle adt "già pronte", che tutta via si basano su differenti strutture dati!

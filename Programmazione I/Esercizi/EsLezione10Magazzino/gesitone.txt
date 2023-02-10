@@ -1,0 +1,2 @@
+Vado a definire un programma, similmente a quello che ho definito in Lez10/5 che permette di andare a gestire un magazzino, in cui sono contenuti un certo numero di pacchi 
+in particolare, usiamo come variabile per accedere al numero dei pacchi un codice, che ci permette poi di "raggiungere" il pacco all'interno del file binario!

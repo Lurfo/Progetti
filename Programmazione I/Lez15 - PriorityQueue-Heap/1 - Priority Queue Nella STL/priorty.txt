@@ -1,0 +1,20 @@
+All'interno di una priority queue tutti gli elementi che vado ad inserire, vengono estratti, non in base alla policy FIFO, ma in base ad una loro
+priorità, possiamo immaginare che essi abbiano una sorta di chiave con la quale sono immagazzinati e l'elemento che ha una chiave con una priorità
+più alta allora è il primo che viene estratto, seguono poi tutti gli altri elementi della coda!
+
+Nella priority queue, implementata nella STL tutti gli elementi che sono inseriti vengono estratti in funzione della loro grandezza, vale cioè 
+A dire che l'elemento più grande è il primo ad essere estratto (come si vede anche nel programma che è stato definito sopra!)
+Di conseguenza, l'uso di una priority queue è molto utile per realizzare un algoritmo di ordinamento di un certo numeri di elementi!
+
+Come per anche altri tipologie di ADT esse sono basate su una struttura dati molto particolare, chiamata HEAP, questa struttura dati è fondamentale
+poichè va ad ottimizzare l'inserimento ed il prelievo di dati all'interno della lista con un tempo di esecuzione pari a "nlog(n)" 
+
+Tale HEAP a sua volta è basato su una struttura molto particolare, chiamata  "ALBERO BINARIO"! 
+In generale un albero binario viene realizzato usando anche un array in un modo molto semplice, andando a dare un effettiva numerazione ai nodi 
+ed inserendo ogni elemento che è contenuto all'interno del nodo i-esimo, nella posizione i-esima di un array!
+
+In questo modo posso andare ad inserire facilmente gli elementi di un albero all'interno di un array e controllare ogni genitore/figlio mediante delle
+operazioni matematiche!
+
+Nel caso in cui non si volesse utilizzare un array per implementare un albero binario, posso andare anche ad implementarlo con delle liste, usando però
+i puntatori del caso!

@@ -1,0 +1,7 @@
+Spesso, è possibile, cosa che risulta anche essere molto utile, in determinate situaioni, andare a separare la dichiarazione delle funzioni che ci
+occorrono, dalla loro implementazione!
+Come mai questa cosa è molto utile? 
+In questo modo possiamo andare a creare delle classi molto più sicure! Se infatti non vogliamo far conoscere ad un altro programmatroe il modo
+in cui la nostra classe gestisce i dati privati che andiamo a fornirle, possiamo dargli, il file .h che contiene solo la dichiarazione della
+classe e delle sue funzioni, mentre possiamo passargli esclusivamente il file .o che contiene invece la specifica di come quelle funzioni operano!
+Rende molto più sicura e facile la gestione della classe!

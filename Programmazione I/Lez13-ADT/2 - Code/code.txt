@@ -1,0 +1,23 @@
+Abbiamo che le code sono dei container molto differenti rispetto agli stack che abbiamo visto in precedenza!
+In particolare ho che, questa tipologia, sfrutta due policy di gestione degli elementi del tipo FIFO-> First In First Out, vale cioè a dire che 
+Il primo elemento che ho inserito è anche il primo che deve essere estratto! Ovviamente in questo container possiamo andare ad inserire tutti gli 
+elementi che vogliamo, tenendo sempre presente che, il primo valore ad essere estratto è sempre quello che è rimasto più tempo nella lista!
+
+In particolare questa particolarità della struttura è data da due Indici che ci aiutano a scorrere la lista: 
+- Indice "head" che rappresenta l'indice che tiene "puntato" il primo elemento che inserisco all'interno della lista, che corrisponde poi al primo
+elemento che deve essere estratto!
+
+- Indice "tail" rappresenta l'indice che tiene "puntato" la posizione in cui dobbiamo andare ad inserire l'elemento! 
+gli elemento vengono quindi accodati!
+
+
+In modo particolare, su questa ADT, andiamo a definire delle funzioni che sono fondamentali!
+- "ENQUEUE" che va ad inserire l'elemento alla coda; 
+- "DEQUEUE" che va ad eliminare l'elemento che si trova in testa alla lista!
+- "FRONT" che, invece, restituisce l'elemento che si trova in cima alla lista senza però andare a rimuoverlo!
+
+Ovviamente si ha che oltre queste funzioni, possiamo andarne a definire moltre altre che servono per poter gestire al meglio l'ADT!
+Quali, ad esempio, la funzione che verifica che la coda non sia vuota e che trova la sua dimensione!
+
+In modo particolare ho la possibilità di andare ad implementare tale tipo di ADT, in inglese chiamata QUEUE, usando un array, come nel caso dello stack
+Oppure in un modo molto più efficiente mediante una lista circolare che però utilizza un implementazione particolare per sfruttare le policy FIFO

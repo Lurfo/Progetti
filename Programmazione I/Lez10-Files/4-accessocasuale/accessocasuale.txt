@@ -1,0 +1,6 @@
+Fino ad ora si è usato un tipo di accesso sequenziale per andare a scrivere all'interno di un file e per andare a prelevarne i dati!
+ovviamente questo non è una cosa efficiente quando consideriamo dei programmi che hanno il compito di andare a gestire un grandissimo numeri di dati
+occorre quindi accedere alla memoria mediante un accesso casuale, in modo da poter raggiungere nel minor tempo possibile il dato che ci occorre 
+
+Una delle tecniche che possiamo utilizzare per fare ciò è sfruttare una lunghezza fissa dei nostri dati, in modo che, tramite una funzione apposita, 
+possiamo facilmente calcolare la posizione in cui questo si trova e sfruttarla per prelevare immediatamente il dato

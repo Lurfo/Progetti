@@ -1,0 +1,91 @@
+Le code di messagi sono una struttura messa a disponizione, nei sistemi UNIX, che permetton la comunicazione di processi
+tra loro indipendenti: tramite lo scambio di messaggi (che possono essere di qualsiasi tipo, senza un formato predefinito)
+
+    ATTENZIONE: Il fatto che il formato non sia predefinito, non implica che non ci siano delle regole da rispettare!
+
+
+Il processo di comunicazione è INDIRETTO: 
+    Non ho uno scambio di messaggi tra mittente e destinatario -> Ma è di tipo MITTENTE->MAILBOX
+    Dalla mailbox, il processo ricevente può andare poi a leggere il messaggio che gli interessa!
+    (tramite l'apposita funzione, che permette anche di "filtrare" i messaggi)
+
+Una mailbox, può anche essere vista come una CODA DI MESSAGGI, che ha come caratteristiche: 
+    -Una chiave, come le risorse IPC (sempre generata nelle medesime modalità)
+    
+    -Un proprietario, il processo che la crea
+
+    -Un gruppo di appartenenza, che può essere utile per selezionare certi tipi di messaggi
+
+    -I permessi che vengono definiti su di essa
+
+
+Sulla coda di messaggi, agiscono differenti tipi di funzioni: 
+
+    -msgget: Permette la creazione della coda -> RESTITUENDO IL SUO ID! (-1 se la creazione non è riuscita)
+        La sua signature è:  int msgget(key chiave, int msgflg);
+        Prende in ingresso la chiave e i flag (Che restano i medesimi delle memorie e dei semafori)
+
+   
+    -msgsend: Invia il messaggio alla coda!
+        La sua signature è: int msgsnd(int msqid, const void *msgp, size_t msgsz, int msgflg);
+        Essa ha come parametri: 
+            -msgid->Id della coda, ottenuta tramite la precedente funzione
+            -msgp->Puntatore al messaggio
+            -msgsz->La dimensione del messaggio    
+                ATTENZIONE:Questa è uguale alla dimensione della struttura messaggio, meno il tipo del messaggio
+            -msgflg->Permette di specificare dei flag per tale funione: 
+                -0 la funzione blocca il processo sel la mailbox è piena
+                -IPC_NOWAIT, non viene bloccato il processo, la funzione ritorna -1 se è piena la mailbox
+
+    NOTA: la funzione è SEMPRE asincrona, tranne quando la mailbox è piena, nel caso in cui blocca il processo, fino a quando 
+    non viene inserito un messaggio all'interno della coda!
+
+
+    -msgrcv: Legge un messaggio dalla coda dei messaggi
+        La signature:   ssize_t msgrcv(int msqid, void *msgp, size_t msgsz, long msgtyp, int msgflg);
+        I cui parametri: 
+            -I primi 3 sono identici a quelli analizzati nel caso precedente
+            -Il parametro msgtyp, invece, è quello più importante: 
+                -1) 0 -> preleva il primo messaggio dalla coda
+                -2) >0 ->Preleva il primo messaggio il cui tipo sia uguale a msgtype
+                -2) <0 -> Preleva il primo messaggio il cui tipo sia <= del suo modulo
+            -msgflg, può specificare dei flag aggiuntivi per la funzione, come:
+                -0 ->receive bloccante: il processo attende che venga inserito un messaggio
+                -IPC_NOWAIT-> Il ricevente, non aspetta, se non ho messaggi, allora mando un errore!
+
+
+    -msgctl: La funzione di controllo che permette di andare a svolgere le azioni sulla coda dei messaggi
+            Il funzionamento è il medesimo di quelle per semafori e shm
+
+    
+
+LA STRUTTURA DEL MESSAGGIO
+
+Il messaggio che dobbiamo inviare, deve essere un struttura che deve essere sempre di questo tipo
+struct msg{
+    long type;
+    char messaggio[SIZE];
+}
+
+Il campo type, identifica il tipo del messaggio che sto inviando ed è un intero long 
+Il corpo del messaggio può essere un elemento qualsiasi, nel caso, una stringa 
+
+ATTENZIONE: Il campo type è molto importante
+Esso deve essere espresso sempre come primo parametro della struttura, e deve essere sempre di tipo long, questo perchè
+alcune funzioni del kernel si aspettano che i primi byte del messaggio siano proprio dedicati al tipo del messaggio che 
+sto inviando
+
+In particolar modo, il tipo del messaggio deve essere sempre impostato con un valore differente da 0!
+questo perchè, come visto nel caso della funzione receive, il tipo 0 è un tipo riservato per particolari comportamenti delle 
+funzioni
+
+Il tipo del messaggio, deve essere sempre specificato, altrimenti si potrebbero generare degli errori e avere un comportamento 
+impredicibile
+
+
+
+CONTROLLO ESERCIZIO ESTERNO
+In particolare, tramite l'apposito scampio di messaggi di controllo è sempre possibile poter implementare delle 
+tipologie di code sincrone, come visto nell'esercizio contenuto in esericzio_code_messaggi2
+        
+

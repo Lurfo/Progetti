@@ -1,0 +1,3 @@
+Avendo dunque visto in che modo è possibile andare a creare un oggetto di tipo heap, posso dunque andare ad implementare senza problematiche una classe
+priority queue che contiene ovviamente la nostra struttura dati!
+Dobbiamo però andare ad utilizzare un vector come base del nostro heap!

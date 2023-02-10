@@ -1,0 +1,2 @@
+Andiamo, come detto nella precedente specifica, a ridefinire alcuni tipi di operatori per la classe data, in modo tale da confrontare due date 
+oppure andare ad effettuare delle operazioni su alcuni oggetti di tipo data

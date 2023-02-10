@@ -1,0 +1,23 @@
+In oarticolare ho che un albero di ricerca binario è un albero in cui ci sono delle fuzioni particolari, tra cui: 
+Inserimento 
+Eliminazione 
+Ricerca
+
+Ma ci sono anche delle funzioni che indicano l'ordinamento degli elementi, tra cui, ad esempio: 
+Predecessor
+Successor
+Cioè funzioni che restituiscono, rispettivamente il predecessore e il successore di un elemento all'interno dell'albero e sono quelle che servono
+per mantenere un certo ordinamento all'interno della struttura!
+
+Un albero binario, in modo particolare è molto utile per andare a mantere una struttura chiamata DIZIONARI
+Proprio per via della tipologia di struttura dati ho che il dizionario non può essere seplicemenete implementato con un heap, ma deve necessariamente
+essere implementato usando questa "nuova" tipologia di struttura dati, chiamata appunto Albero di Ricerca Binaro!
+
+Questa tipologia di ADT è molto importante poichè gode di una proprietà fondamentale!
+TUTTI GLI ELEMENTI CHE HANNO UNA CHIAVE MINORE DI UN NODO SI TROVANO ALLA SUA SINISTRA, ALTRIMENTI ALLA SUA DESTRA!
+Proprio grazie a questa loro proprietà gli alberi di ricerca binari sono molto importanti!
+(Ovviamente questa loro proprietà si trova per ogni nodo contenuto nell'albero!)
+
+Però, per via della particolarità di questa struttura dati, non possiamo andarla semplicemente ad implementarla mediante un vettore o mediante un array
+come fatto per un "normale" albero binario, ma devo necessariamente andare ad implementarlo mediante un nodo che contiene anche dei
+puntatori sia all'elemento "padre" che agli elementi suoi figli!
